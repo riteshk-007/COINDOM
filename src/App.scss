@@ -1,1 +1,16 @@
 @import "./mixins.scss";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body,
+html {
+  width: 100%;
+  background: linear-gradient(0deg, #190439 0%, #230e4d 100%) no-repeat;
+  color: #fff;
+}
+.link {
+  color: #000;
+  text-decoration: none;
+}
