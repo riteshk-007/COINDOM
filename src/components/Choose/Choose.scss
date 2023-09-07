@@ -1,0 +1,89 @@
+@import "../../mixins.scss";
+.choose {
+  display: flex;
+  flex-direction: column;
+  h1 {
+    margin: auto;
+    font-size: 35px;
+    span {
+      background: linear-gradient(to left, #0b26ee, #bf10cc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    @include md {
+      font-size: 80px;
+    }
+  }
+  .container {
+    margin-top: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    img {
+      height: 50vh;
+      object-fit: cover;
+      @include md {
+        height: 60vh;
+      }
+    }
+    .box {
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      flex-wrap: wrap;
+      flex-direction: row;
+      .card {
+        width: 300px;
+        background: rgba(212, 212, 212, 0.15);
+        border-radius: 16px;
+        backdrop-filter: blur(4.1px);
+        -webkit-backdrop-filter: blur(4.1px);
+        padding: 20px 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 10px;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        .left {
+          padding: 20px;
+          span {
+            font-size: 25px;
+            padding: 15px 20px;
+            border-radius: 15px;
+            background: linear-gradient(to right, #142ef7, #bf10cc);
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+          }
+        }
+        .right {
+          display: flex;
+          flex-direction: column;
+          span {
+            font-weight: 700;
+
+            @include md {
+              font-size: 25px;
+            }
+          }
+          p {
+            margin-top: 10px;
+          }
+        }
+        @include md {
+          width: 400px;
+        }
+      }
+      @include lg {
+        flex-direction: column;
+      }
+    }
+    @include lg {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+  }
+  @include md {
+    margin: 100px 0;
+  }
+}

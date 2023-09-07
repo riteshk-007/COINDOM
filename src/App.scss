@@ -4,6 +4,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Noto Sans Georgian", sans-serif;
 }
 body,
 html {
@@ -26,5 +27,5 @@ body::-webkit-scrollbar-track {
 body::-webkit-scrollbar-thumb {
   background-color: rgb(94, 3, 199); /* color of the scroll thumb */
   border-radius: 5px; /* roundness of the scroll thumb */
-  border: 0.1px solid #fff; /* creates padding around scroll thumb */
+  border: 0.1px solid #5e5e5e; /* creates padding around scroll thumb */
 }

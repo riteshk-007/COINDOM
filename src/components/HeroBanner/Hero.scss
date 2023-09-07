@@ -21,10 +21,20 @@
       }
       @keyframes slidein {
         from {
-          transform: translateY(20px);
+          transform: translateY(0px);
         }
         to {
-          transform: translateY(60px);
+          transform: translateY(50px);
+        }
+      }
+      @include md {
+        @keyframes slidein {
+          from {
+            transform: translateY(20px);
+          }
+          to {
+            transform: translateY(60px);
+          }
         }
       }
     }
@@ -82,7 +92,7 @@
     }
   }
   .bottom {
-    width: 50%;
+    width: 100%;
     display: none;
     align-items: center;
     justify-content: space-between;
@@ -118,6 +128,9 @@
     }
     @include md {
       display: flex;
+    }
+    @include xl {
+      width: 50%;
     }
   }
 }
