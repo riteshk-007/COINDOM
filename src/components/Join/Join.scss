@@ -1,1 +1,93 @@
 @import "../../mixins.scss";
+.join {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 50px;
+  .top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+    gap: 20px;
+    img {
+      height: 80px;
+      object-fit: cover;
+      animation: 1s linear 1s infinite alternate slidein;
+      display: none;
+      @include md {
+        display: block;
+      }
+      @keyframes slidein {
+        from {
+          transform: translateY(0px);
+        }
+        to {
+          transform: translateY(50px);
+        }
+      }
+      @include md {
+        @keyframes slidein {
+          from {
+            transform: translateY(20px);
+          }
+          to {
+            transform: translateY(60px);
+          }
+        }
+      }
+    }
+    .text {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: "Noto Sans Georgian", sans-serif;
+      font-size: 1.4em;
+      .color {
+        background: linear-gradient(to bottom, #182dc7, #ee0aff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        @include md {
+          background: linear-gradient(to left, #182dc7, #ee0aff);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+        }
+      }
+      h1 {
+        text-align: center;
+      }
+      p {
+        font-size: 20px;
+        text-align: center;
+        margin: 10px 0;
+      }
+      @include md {
+        font-size: 2.5vw;
+      }
+    }
+    @include md {
+      align-items: flex-start;
+    }
+  }
+  button {
+    margin-top: 20px;
+    background: linear-gradient(to right, #2536b8 5%, #ee0aff 95%);
+    padding: 15px 40px;
+    font-size: 20px;
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    display: flex;
+    gap: 10px;
+    font-weight: bolder;
+    align-items: center;
+    justify-content: center;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+      rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+    cursor: pointer;
+  }
+}

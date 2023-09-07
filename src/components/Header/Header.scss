@@ -89,6 +89,7 @@
       align-items: center;
       justify-content: center;
       position: relative;
+      flex-direction: column;
       ul {
         display: block;
         li {
@@ -99,6 +100,7 @@
             color: #000;
             text-decoration: none;
             font-size: 25px;
+            font-weight: 500;
             &:hover {
               background: #5b0675;
               background: linear-gradient(to right, #5b0675 0%, #cf11cf 100%);
@@ -121,8 +123,26 @@
     @include md {
       display: none;
     }
+    .content {
+      display: flex;
+      margin-top: 20px;
+      gap: 30px;
+      a {
+        text-decoration: none;
+        color: #000;
+        font-size: 40px;
+        cursor: pointer;
+      }
+    }
   }
   @include md {
     justify-content: space-evenly;
   }
+}
+.active {
+  position: sticky;
+  top: 0;
+  background-color: #230e4d;
+  box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px,
+    rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
 }

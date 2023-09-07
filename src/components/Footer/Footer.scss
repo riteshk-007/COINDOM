@@ -1,1 +1,41 @@
 @import "../../mixins.scss";
+.footer {
+  background-color: #1b063d;
+  background-position: 50%;
+  background-size: cover;
+  height: 25rem;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  .content {
+    display: flex;
+    gap: 30px;
+    a {
+      text-decoration: none;
+      color: #fff;
+      font-size: 40px;
+      cursor: pointer;
+    }
+  }
+  .page {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    p {
+      cursor: pointer;
+      &:hover {
+        background: #5b0675;
+        background: linear-gradient(to right, #3112df 0%, #fd02fd 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+    }
+  }
+  @include md {
+    background-image: url("https://coindom-crypto-search.vercel.app/static/media/footer-bg.e33c036e05f949cf81cb.png");
+    height: 35rem;
+  }
+}
