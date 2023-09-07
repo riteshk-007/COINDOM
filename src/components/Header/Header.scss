@@ -1,11 +1,10 @@
 @import "../../mixins.scss";
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@600&display=swap");
 .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 30px;
-  font-family: "Roboto Mono", monospace;
+  font-family: "Noto Sans Georgian", sans-serif;
   position: relative;
   z-index: 50;
   .left {

@@ -1,1 +1,123 @@
 @import "../../mixins.scss";
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 50px;
+  .top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+    gap: 20px;
+    img {
+      height: 80px;
+      object-fit: cover;
+      animation: 1s linear 1s infinite alternate slidein;
+      display: none;
+      @include md {
+        display: block;
+      }
+      @keyframes slidein {
+        from {
+          transform: translateY(20px);
+        }
+        to {
+          transform: translateY(60px);
+        }
+      }
+    }
+    .text {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: "Noto Sans Georgian", sans-serif;
+      font-size: 1.4em;
+      .color {
+        background: linear-gradient(to bottom, #4559f0, #c90ed6);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        @include md {
+          background: linear-gradient(to left, #0b26ee, #bf10cc);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+        }
+      }
+      h1 {
+        text-align: center;
+      }
+      @include md {
+        font-size: 2.5vw;
+      }
+    }
+    @include md {
+      align-items: flex-start;
+    }
+  }
+  button {
+    margin-top: 20px;
+    background: linear-gradient(to right, #0c1b8d 5%, #dd1ceb 95%);
+    padding: 15px 40px;
+    font-size: 20px;
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    display: flex;
+    gap: 10px;
+    font-weight: bolder;
+    align-items: center;
+    justify-content: center;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+      rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+      rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    span {
+      margin-top: 10px;
+    }
+    @include md {
+      display: none;
+    }
+  }
+  .bottom {
+    width: 50%;
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 50px;
+    .coin {
+      width: auto;
+      font-family: "Noto Sans Georgian", sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 10px;
+      img {
+        width: 80px;
+      }
+      span {
+        font-size: 19px;
+        color: #fff;
+        display: flex;
+        font-weight: 700;
+        text-transform: capitalize;
+        h4 {
+          margin: 0px 10px;
+        }
+        .red {
+          color: red;
+        }
+        .green {
+          color: rgb(6, 179, 6);
+        }
+      }
+    }
+    @include md {
+      display: flex;
+    }
+  }
+}
