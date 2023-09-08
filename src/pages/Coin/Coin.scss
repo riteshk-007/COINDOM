@@ -1,1 +1,79 @@
 @import "../../mixins.scss";
+.coin {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 30px auto;
+  flex-wrap: wrap;
+  .left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 2px solid #ccc;
+    padding: 40px;
+    gap: 20px;
+    img {
+      height: 200px;
+    }
+    @include lg {
+      border-right: 2px solid #ccc;
+      border-bottom: 0px solid #ccc;
+    }
+  }
+  .right {
+    display: flex;
+    width: 90%;
+    flex-direction: column;
+    justify-content: flex-start;
+    .top {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 15px;
+      span {
+        font-size: 20px;
+        display: flex;
+        gap: 10px;
+        font-weight: 700;
+        .green {
+          color: rgb(3, 148, 3);
+        }
+      }
+      @include lg {
+        gap: 20px;
+      }
+    }
+    .bottom {
+      width: 100%;
+      overflow: hidden;
+      overflow-y: auto;
+      height: 250px;
+      padding: 15px;
+      &::-webkit-scrollbar {
+        width: 12px; /* width of the entire scrollbar */
+      }
+
+      &::-webkit-scrollbar-track {
+        background: #483075; /* color of the tracking area */
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: rgb(94, 3, 199); /* color of the scroll thumb */
+        border-radius: 5px; /* roundness of the scroll thumb */
+        border: 0.1px solid #5e5e5e; /* creates padding around scroll thumb */
+      }
+    }
+    @include lg {
+      width: 50%;
+    }
+  }
+
+  @include lg {
+    width: 70%;
+  }
+}

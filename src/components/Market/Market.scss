@@ -1,1 +1,93 @@
 @import "../../mixins.scss";
+.market {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin: 50px auto;
+  padding: 10px;
+  h1 {
+    font-size: 25px;
+    @include md {
+      font-size: 45px;
+    }
+  }
+  .container {
+    width: 100%;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    border-radius: 7px;
+    overflow: hidden;
+    overflow-x: auto;
+    .table {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      min-width: 600px;
+    }
+    .head {
+      width: 100%;
+      padding: 15px 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      background: linear-gradient(to left, #0b26ee, #bf10cc);
+    }
+    .coinDetail {
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      width: 100%;
+      padding: 20px 10px;
+      cursor: pointer;
+      color: #fff;
+      border-bottom: 2px solid rgb(128, 128, 128);
+      transition: all 0.2s;
+      &:hover {
+        background: #280963;
+      }
+      .first {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 20px;
+        img {
+          height: 40px;
+          @include md {
+            height: 50px;
+          }
+        }
+      }
+    }
+    p {
+      width: calc(100% - 75%);
+      font-size: 15px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      &:last-child {
+        justify-content: flex-end;
+      }
+      &:first-child {
+        justify-content: flex-start;
+      }
+      @include md {
+        font-size: 20px;
+      }
+    }
+    .green {
+      color: rgb(2, 150, 2);
+    }
+    .red {
+      color: red;
+    }
+    @include md {
+      margin-top: 40px;
+    }
+  }
+  @include md {
+    width: 70%;
+  }
+}
