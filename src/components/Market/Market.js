@@ -12,16 +12,14 @@ function Market() {
   const indexOfFirstCoins = indexOfLastCoins - listOfPerPage;
   const currentCoins = coin?.slice(indexOfFirstCoins, indexOfLastCoins);
 
+  function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
   const paginate = (e, value) => {
     setCurrentPage(value);
     window.scrollTo({ top: 600, behavior: "smooth" });
   };
-  if (loading)
-    return (
-      <div className="loading">
-        <span className="loader"></span>
-      </div>
-    );
+
   return (
     <div className="market">
       <h1>Market Update</h1>
@@ -33,31 +31,35 @@ function Market() {
             <p>24h Change</p>
             <p>Market Cap</p>
           </div>
-          {currentCoins?.map((item) => (
-            <Link
-              className="coinDetail link"
-              to={`/coin/${item.id}`}
-              key={item.id}
-            >
-              <p className="first">
-                <img src={item?.image} alt="" />
-                <span>{item?.name}</span>
-              </p>
-              <p>₹ {item?.current_price}</p>
-              <p>
-                {item?.price_change_percentage_24h > 0 ? (
-                  <span className="green">
-                    {item?.price_change_percentage_24h} %
-                  </span>
-                ) : (
-                  <span className="red">
-                    {item?.price_change_percentage_24h} %
-                  </span>
-                )}
-              </p>
-              <p>₹ {item?.market_cap}</p>
-            </Link>
-          ))}
+          {loading ? (
+            <div className="loading">
+              <span className="loader"></span>
+            </div>
+          ) : (
+            currentCoins?.map((item) => (
+              <Link
+                className="coinDetail link"
+                to={`/coin/${item.id}`}
+                key={item.id}
+              >
+                <p className="first">
+                  <img src={item?.image} alt="" />
+                  <span>{item?.name}</span>
+                </p>
+                <p>{"₹" + numberWithCommas(item?.current_price.toFixed(2))}</p>
+                <p
+                  className={
+                    item?.price_change_percentage_24h > 0 ? "green" : "red"
+                  }
+                >
+                  {item?.price_change_percentage_24h
+                    ? item?.price_change_percentage_24h.toFixed(2) + "%"
+                    : ""}
+                </p>
+                <p>₹ {numberWithCommas(item.market_cap)}</p>
+              </Link>
+            ))
+          )}
         </div>
       </div>
       <div className="pagination">

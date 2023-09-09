@@ -6,6 +6,10 @@ import { ContextApp } from "../../utils/Context";
 function Hero() {
   const { coin, loading } = useContext(ContextApp);
   const data = coin.slice(0, 4);
+
+  function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
   return (
     <div className="hero">
       <div className="top">
@@ -37,19 +41,19 @@ function Hero() {
               <img src={coins?.image} alt="" />
               <span>
                 {coins?.name}
-                <h4>
-                  {coins?.price_change_percentage_24h > 0 ? (
-                    <span className="green">
-                      {coins?.price_change_percentage_24h} %
-                    </span>
-                  ) : (
-                    <span className="red">
-                      {coins?.price_change_percentage_24h} %
-                    </span>
-                  )}
+                <h4
+                  className={
+                    coins?.price_change_percentage_24h > 0 ? "green" : "red"
+                  }
+                >
+                  {coins?.price_change_percentage_24h
+                    ? coins?.price_change_percentage_24h.toFixed(2) + "%"
+                    : ""}
                 </h4>
               </span>
-              <span>₹ {coins?.current_price}</span>
+              <span>
+                {"₹" + numberWithCommas(coins?.current_price.toFixed(2))}
+              </span>
             </Link>
           ))
         )}

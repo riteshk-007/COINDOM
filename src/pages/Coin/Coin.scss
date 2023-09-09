@@ -80,3 +80,23 @@
     width: 70%;
   }
 }
+.chart {
+  width: 95%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 30px auto;
+  background: #000000af;
+  border-radius: 7px;
+  padding: 10px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.btn {
+  display: flex;
+  width: 80%;
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 13px;
+}
