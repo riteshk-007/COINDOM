@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Hero.scss";
 import { BsChevronDoubleDown } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import { ContextApp } from "../../utils/Context";
 function Hero() {
+  const { coin, loading } = useContext(ContextApp);
+  const data = coin.slice(0, 4);
   return (
     <div className="hero">
       <div className="top">
@@ -13,41 +16,43 @@ function Hero() {
         </span>
         <img src="/eth.png" alt="" />
       </div>
-      <button>
+      <button onClick={() => window.scrollTo({ top: 600, behavior: "smooth" })}>
         See Prices
         <span>
           <BsChevronDoubleDown />
         </span>
       </button>
       <div className="bottom">
-        <Link to={"/"} className="link coin">
-          <img src="/image/img1.png" alt="" />
-          <span>
-            BitCoin <h4 className="green">0.12%</h4>
-          </span>
-          <span> ₹ 21,39,962.21</span>
-        </Link>
-        <Link to={"/"} className="link coin">
-          <img src="/image/img2.png" alt="" />
-          <span>
-            ethereum <h4 className="green">0.39%</h4>
-          </span>
-          <span> ₹ 1,35,876.73</span>
-        </Link>
-        <Link to={"/"} className="link coin">
-          <img src="/image/img3.png" alt="" />
-          <span>
-            Tether <h4 className="red">-0.00%</h4>
-          </span>
-          <span> ₹ 83.15</span>
-        </Link>
-        <Link to={"/"} className="link coin">
-          <img src="/image/img4.png" alt="" />
-          <span>
-            BNB <h4 className="green">0.47%</h4>
-          </span>
-          <span> ₹ 217,917.28</span>
-        </Link>
+        {loading ? (
+          <div className="loading">
+            <span className="loader"></span>
+          </div>
+        ) : (
+          data?.map((coins) => (
+            <Link
+              to={`/coin/${coins.id}`}
+              className="link coin"
+              key={coins?.id}
+            >
+              <img src={coins?.image} alt="" />
+              <span>
+                {coins?.name}
+                <h4>
+                  {coins?.price_change_percentage_24h > 0 ? (
+                    <span className="green">
+                      {coins?.price_change_percentage_24h} %
+                    </span>
+                  ) : (
+                    <span className="red">
+                      {coins?.price_change_percentage_24h} %
+                    </span>
+                  )}
+                </h4>
+              </span>
+              <span>₹ {coins?.current_price}</span>
+            </Link>
+          ))
+        )}
       </div>
     </div>
   );

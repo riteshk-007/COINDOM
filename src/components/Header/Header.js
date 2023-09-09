@@ -4,11 +4,16 @@ import "./Header.scss";
 import { BsDiscord, BsTwitter } from "react-icons/bs";
 import { RiMenu3Line } from "react-icons/ri";
 import { MdClose } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { BsLinkedin, BsGithub } from "react-icons/bs";
 function Header() {
   const [show, setShow] = useState(false);
   const [sticky, setSticky] = useState(false);
+
+  const navigate = useNavigate();
+  const handleHome = () => {
+    navigate("/");
+  };
 
   const handleScroll = () => {
     if (window.scrollY > 150) {
@@ -29,7 +34,9 @@ function Header() {
       <div className="middle">
         <ul>
           <li>
-            <a href="#home">Home</a>
+            <a href="#home" onClick={handleHome}>
+              Home
+            </a>
           </li>
           <li>
             <a href="#home">Market</a>
@@ -62,7 +69,13 @@ function Header() {
           <div className="ul">
             <ul>
               <li>
-                <a href="#home" onClick={() => setShow(false)}>
+                <a
+                  href="#home"
+                  onClick={() => {
+                    setShow(false);
+                    navigate("/");
+                  }}
+                >
                   Home
                 </a>
               </li>

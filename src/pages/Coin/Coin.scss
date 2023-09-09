@@ -43,6 +43,9 @@
         .green {
           color: rgb(3, 148, 3);
         }
+        .red {
+          color: red;
+        }
       }
       @include lg {
         gap: 20px;

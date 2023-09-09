@@ -1,9 +1,27 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import "./Market.scss";
 import { Link } from "react-router-dom";
+import { ContextApp } from "../../utils/Context";
+import Pagination from "@mui/material/Pagination";
 function Market() {
-  /* https://react-responsive-pagination.elantha.com/custom-styled-pagination/ */
+  const { coin, loading } = useContext(ContextApp);
+  const [currentPage, setCurrentPage] = useState(1);
+  const listOfPerPage = 10;
 
+  const indexOfLastCoins = currentPage * listOfPerPage;
+  const indexOfFirstCoins = indexOfLastCoins - listOfPerPage;
+  const currentCoins = coin?.slice(indexOfFirstCoins, indexOfLastCoins);
+
+  const paginate = (e, value) => {
+    setCurrentPage(value);
+    window.scrollTo({ top: 600, behavior: "smooth" });
+  };
+  if (loading)
+    return (
+      <div className="loading">
+        <span className="loader"></span>
+      </div>
+    );
   return (
     <div className="market">
       <h1>Market Update</h1>
@@ -15,17 +33,46 @@ function Market() {
             <p>24h Change</p>
             <p>Market Cap</p>
           </div>
-          <Link className="coinDetail link" to={"/coin/1"}>
-            <p className="first">
-              <img src="/image/img1.png" alt="" />
-              <span>BitCoin</span>
-            </p>
-            <p>₹ 21,39,962.21</p>
-            <p className="green">0.12%</p>
-            <p>₹ 511,300,246,257</p>
-          </Link>
+          {currentCoins?.map((item) => (
+            <Link
+              className="coinDetail link"
+              to={`/coin/${item.id}`}
+              key={item.id}
+            >
+              <p className="first">
+                <img src={item?.image} alt="" />
+                <span>{item?.name}</span>
+              </p>
+              <p>₹ {item?.current_price}</p>
+              <p>
+                {item?.price_change_percentage_24h > 0 ? (
+                  <span className="green">
+                    {item?.price_change_percentage_24h} %
+                  </span>
+                ) : (
+                  <span className="red">
+                    {item?.price_change_percentage_24h} %
+                  </span>
+                )}
+              </p>
+              <p>₹ {item?.market_cap}</p>
+            </Link>
+          ))}
         </div>
-        <span></span>
+      </div>
+      <div className="pagination">
+        {coin?.length > 10 && (
+          <Pagination
+            color="secondary"
+            variant="text"
+            shape="rounded"
+            defaultPage={1}
+            count={Math.ceil(coin.length / listOfPerPage)}
+            page={currentPage}
+            onChange={paginate}
+            size="large"
+          />
+        )}
       </div>
     </div>
   );
